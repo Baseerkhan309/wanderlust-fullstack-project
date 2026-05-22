@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+const listing = require("./models/listing.js")
 
 // Read from .env
 const MONGO_URL = process.env.MONGO_URL;
@@ -21,6 +22,21 @@ async function main() {
 
 app.get("/", (req, res) => {
   res.send("Hi, I am root");
+});
+
+app.get("/testListing", async (req, res)=>{
+     let sampleListing = new listing({
+      title : "My New Villa",
+      description : "By the beach",
+      price : 3000,
+      location : "kpk, Swat",
+      country : "Pakistan",
+     });
+
+     await sampleListing.save();
+     console.log("sample was save");
+     res.send("successful testing");
+     
 });
 
 app.listen(PORT, () => {
