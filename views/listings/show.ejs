@@ -7,10 +7,6 @@
   </head>
   <body>
     <h3>Listing Details :</h3>
-    <form method="GET" action="/listings/new">
-        <button>Create New Listing</button>
-    </form>
-
     <ul>
       <li><%= listing.title %></li>
       <li><%= listing.description %></li>
@@ -18,5 +14,8 @@
       <li><%= listing.location %></li>
       <li><%= listing.country %></li>
     </ul>
+
+    <br>
+    <a href="/listings/<%= listing._id %>/edit">Edit this Listing</a>
   </body>
 </html>
