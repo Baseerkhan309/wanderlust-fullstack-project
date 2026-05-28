@@ -1,14 +1,13 @@
-require("dotenv").config({ path: "../.env" });
 const mongoose = require("mongoose");
 const initData = require("./data.js");
-const listing = require("../models/listing.js");
+const Listing = require("../models/listing.js");
 
-const MONGO_URL = process.env.MONGO_URL;
-
+const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
 
 main()
-  .then(() => {
+  .then(async() => {
     console.log("connected to DB");
+   await initDB();
   })
   .catch((err) => {
     console.log(err);
@@ -19,9 +18,9 @@ async function main() {
 }
 
 const initDB = async()=>{
-    await listing.deleteMany({});
-    await listing.insertMany(initData.data);
-    console.log("Data was initialized");
+  await Listing.deleteMany({});
+  await Listing.insertMany(initData.data);
+  console.log("Data Was initialized");
+     
 };
 
-initDB();
