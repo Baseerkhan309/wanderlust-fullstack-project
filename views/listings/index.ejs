@@ -5,9 +5,10 @@
     <!-- <form method="GET" action="/listings/new">
         <button>Create New Listing</button>
     </form> -->
-
+    <div class="row row-cols-lg 3 row-cols-md 3 row cols-sm-1">
+       
 <% for(let listing of allListings) { %>
-  <div class="card" style="width: 18rem;">
+  <div class="card" style="width: 20rem;">
     
     <img src="<%= listing.image %>" class="card-img-top" alt="listing_image">
 
@@ -15,8 +16,8 @@
       <h5 class="card-title">Card title</h5>
 
       <p class="card-text">
-        <%= listing.title %><br>
-        Rs. <%= listing.price %>
+       <b><%= listing.title %><br></b>
+        Rs. <%= listing.price.toLocaleString("en-PK") %> /night
       </p>
 
     </div>
@@ -24,11 +25,6 @@
 <% } %>
 
 </div>
-    <ul>
-        <% for(let listing of allListings) {%>
-        <li><a href="/listings/<%= listing._id %>"> <%= listing.title %></a></li>
-        
-        <% } %>
-    </ul>
+    </div>
     
 </body>
