@@ -1,6 +1,13 @@
-/* body{
-    background-color: pink;
-} */
+ body{
+   font-family: "plus jakarta Sans", sans-serif !important;
+   display: flex;
+   flex-direction: column;
+   min-height: 100vh;
+
+} 
+.container{
+    flex : 1;
+}
 
 /* Navbar */
 
@@ -85,4 +92,8 @@
 .card-img-overlay:hover{
    opacity: 0.2;
    background-color: white;
+}
+
+.add-btn{
+   color:#fe424f;
 }
