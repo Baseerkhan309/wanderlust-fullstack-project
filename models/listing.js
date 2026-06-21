@@ -13,9 +13,8 @@ const listingSchema = new Schema({
 
   description: String,
   image: {
-    type: String,
-    default: "https://images.unsplash.com/photo-1501785888041-af3ef285b470",
-    set: (v) => (v === "" ? undefined : v),
+    url: String,
+    filename: String,
   },
 
   price: {
@@ -48,7 +47,7 @@ const listingSchema = new Schema({
 
 listingSchema.post("findOneAndDelete", async (listing) => {
   if (listing) {
-    await Review.deleteMany({ _id: { $in: listing.reviews } }); 
+    await Review.deleteMany({ _id: { $in: listing.reviews } });
   }
 })
 
