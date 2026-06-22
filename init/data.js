@@ -10,6 +10,10 @@ const sampleListings = [
     price: 7000,
     location: "Swat",
     country: "Pakistan",
+    geometry: {
+      type: "Point",
+      coordinates: [72.4258, 35.2227]
+    }
   },
 
   {
@@ -23,6 +27,10 @@ const sampleListings = [
     price: 8500,
     location: "Kalam",
     country: "Pakistan",
+    geometry: {
+      type: "Point",
+      coordinates: [72.5856, 35.4907]
+    }
   },
 
   {
@@ -36,6 +44,10 @@ const sampleListings = [
     price: 9000,
     location: "Abbottabad",
     country: "Pakistan",
+    geometry: {
+      type: "Point",
+      coordinates: [73.2215, 34.1688]
+    }
   },
 
   {
@@ -49,6 +61,10 @@ const sampleListings = [
     price: 11000,
     location: "Naran",
     country: "Pakistan",
+    geometry: {
+      type: "Point",
+      coordinates: [73.6500, 34.9083]
+    }
   },
 
   {
@@ -62,6 +78,10 @@ const sampleListings = [
     price: 6000,
     location: "Kaghan",
     country: "Pakistan",
+    geometry: {
+      type: "Point",
+      coordinates: [73.5790, 34.7930]
+    }
   },
 
   {
@@ -75,6 +95,10 @@ const sampleListings = [
     price: 9500,
     location: "Chitral",
     country: "Pakistan",
+    geometry: {
+      type: "Point",
+      coordinates: [71.7864, 35.8510]
+    }
   },
 
   {
@@ -88,6 +112,10 @@ const sampleListings = [
     price: 6500,
     location: "Dir",
     country: "Pakistan",
+    geometry: {
+      type: "Point",
+      coordinates: [71.8400, 35.2070]
+    }
   },
 
   {
@@ -101,6 +129,10 @@ const sampleListings = [
     price: 12000,
     location: "Malam Jabba",
     country: "Pakistan",
+    geometry: {
+      type: "Point",
+      coordinates: [72.5710, 34.7990]
+    }
   },
 
   {
@@ -114,6 +146,10 @@ const sampleListings = [
     price: 7500,
     location: "Upper Dir",
     country: "Pakistan",
+    geometry: {
+      type: "Point",
+      coordinates: [71.8500, 35.5500]
+    }
   },
 
   {
@@ -127,6 +163,10 @@ const sampleListings = [
     price: 8000,
     location: "Shangla",
     country: "Pakistan",
+    geometry: {
+      type: "Point",
+      coordinates: [72.6200, 34.9300]
+    }
   },
 ];
 
