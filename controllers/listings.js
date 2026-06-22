@@ -24,16 +24,41 @@ module.exports.showListing = async (req, res) => {
 };
 
 module.exports.createListing = async (req, res) => {
-    let url = req.file.path;
-    let filename = req.file.filename;
 
-    const newListing = new Listing(req.body.listing);
-    newListing.owner = req.user._id;
-    newListing.image = { url, filename };
-    await newListing.save();
-    req.flash("success", "New Listing created!");
-    res.redirect("/listings");
-};
+    let location = req.body.listing.location;
+
+    const response = await fetch(
+        `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(location)}&format=json&limit=1`,
+        {
+            headers: {
+                "User-Agent": "WanderLust-App"
+            }
+        }
+    );
+
+    if (!response.ok) {
+        throw new Error("Geocoding failed");
+    }
+
+    const data = await response.json();
+    if (data.length) {
+        req.body.listing.geometry = {
+            type: "Point",
+            coordinates: [
+                Number(data[0].lon),
+                Number(data[0].lat)
+            ]
+        };
+    }
+
+
+    let listing = new Listing(req.body.listing);
+    listing.owner = req.user._id;
+
+    await listing.save();
+
+    res.redirect(`/listings/${listing._id}`);
+}
 
 module.exports.renderEditForm = async (req, res) => {
     let { id } = req.params;
