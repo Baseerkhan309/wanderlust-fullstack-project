@@ -4,19 +4,17 @@
   <div class="col-8 offset-3">
     <h3><%= listing.title %></h3>
   </div>
-
   <div class="card col-6 offset-3 show-card listing-card">
     <img src="<%= listing.image.url %>" class="card-img-top show-img" alt="listing_image" />
-
     <div class="card-body">
       <p class="card-text">Owned by: <i><%= listing.owner.username %></i></p>
       <p class="card-text"><%= listing.description %></p>
       <p class="card-text">₨<%= listing.price.toLocaleString("en-PK") %></p>
       <p class="card-text"><%= listing.location %> </p>
       <p class="card-text"><%= listing.country %></p>
+      <div id="map"></div>
     </div>
   </div>
-
 
   <% if(currUser && listing.owner._id.equals(currUser._id)) { %>
 
@@ -85,9 +83,10 @@
   <% } %>
 
 
-  <p><b>All Reviews</b>
+  <%  if(listing.reviews.length > 0) { %>
   <div class="row">
-    <% for(review of listing.reviews) { %>
+    <p><b>All Reviews</b>
+      <% for(review of listing.reviews) { %>
     <div class="card col-5 ms-3 mb-3">
       <div class="card-body">
         <h5 class="card-title">@<%= review.author.username %></h5>
@@ -102,5 +101,6 @@
     </div>
     <% } %>
   </div>
+  <% } %>
 </div>
 </div>
