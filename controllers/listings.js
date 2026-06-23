@@ -11,22 +11,28 @@ module.exports.renderNewForm = async (req, res) => {
 };
 
 
-
 module.exports.showListing = async (req, res) => {
     let { id } = req.params;
-    const listing = await Listing.findById(id).populate({ path: "reviews", populate: { path: "author" }, }).populate("owner");
+
+    const listing = await Listing.findById(id)
+        .populate({
+            path: "reviews",
+            populate: {
+                path: "author"
+            }
+        })
+        .populate("owner");
+
     if (!listing) {
-        req.flash("error", "Listing you requested for does not exist!");
+        req.flash("error", "Listing does not exist!");
         return res.redirect("/listings");
     }
-    console.log(listing);
+
     res.render("listings/show.ejs", { listing });
 };
 
 module.exports.createListing = async (req, res) => {
-
     let location = req.body.listing.location;
-
     const response = await fetch(
         `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(location)}&format=json&limit=1`,
         {
@@ -35,11 +41,9 @@ module.exports.createListing = async (req, res) => {
             }
         }
     );
-
     if (!response.ok) {
         throw new Error("Geocoding failed");
     }
-
     const data = await response.json();
     if (data.length) {
         req.body.listing.geometry = {
@@ -50,13 +54,17 @@ module.exports.createListing = async (req, res) => {
             ]
         };
     }
-
-
     let listing = new Listing(req.body.listing);
+
+    console.log(req.file);
+
+    listing.image = {
+        url: req.file.path,
+        filename: req.file.filename,
+    };
+
     listing.owner = req.user._id;
-
     await listing.save();
-
     res.redirect(`/listings/${listing._id}`);
 }
 
