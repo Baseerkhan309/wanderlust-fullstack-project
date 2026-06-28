@@ -7,12 +7,39 @@
   <div class="card col-6 offset-3 show-card listing-card">
 
 
-    <img src="<%= listing.image.url %>" class="card-img-top show-img" alt="listing_image" />
+    <div id="listingCarousel" class="carousel slide">
+
+      <!-- Dots -->
+      <div class="carousel-indicators">
+        <% listing.images.forEach((image, index) => { %>
+        <button type="button" data-bs-target="#listingCarousel" data-bs-slide-to="<%= index %>" class="<%= index === 0 ? 'active' : '' %>">
+        </button>
+        <% }) %>
+      </div>
+
+      <!-- Images -->
+      <div class="carousel-inner">
+        <% listing.images.forEach((image, index) => { %>
+        <div class="carousel-item <%= index === 0 ? 'active' : '' %>">
+          <img src="<%= image.url %>" class="d-block w-100 show-img" alt="listing_image">
+        </div>
+        <% }) %>
+      </div>
+
+      <!-- Left -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#listingCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+
+      <!-- Right -->
+      <button class="carousel-control-next" type="button" data-bs-target="#listingCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
+    </div>
 
 
     <div class="card-body">
       <p class="card-text">Owned by: <i><%= listing.owner.username %></i></p>
-
       <p class="card-text"><%= listing.description %></p>
       <p class="card-text">₨<%= listing.price.toLocaleString("en-PK") %></p>
       <p class="card-text"><%= listing.location %> </p>
