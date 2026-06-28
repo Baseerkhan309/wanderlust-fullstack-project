@@ -56,12 +56,12 @@ module.exports.createListing = async (req, res) => {
     }
     let listing = new Listing(req.body.listing);
 
-    console.log(req.file);
+    console.log(req.files);
 
-    listing.image = {
-        url: req.file.path,
-        filename: req.file.filename,
-    };
+    listing.images = req.files.map((file) => ({
+        url: file.path,
+        filename: file.filename,
+    }));
 
     listing.owner = req.user._id;
     await listing.save();
@@ -76,7 +76,7 @@ module.exports.renderEditForm = async (req, res) => {
         return res.redirect("/listings");
     }
 
-    let originalImageUrl = listing.image.url;
+    let originalImageUrl = listing.images[0].url;
     originalImageUrl = originalImageUrl.replace("/upload", "/upload/w_250");
     res.render("listings/edit.ejs", { listing, originalImageUrl });
 
