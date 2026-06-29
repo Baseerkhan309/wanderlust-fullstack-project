@@ -20,16 +20,17 @@
         </div>
       </div>
 
-
       <div class="mb-3">
-        Original Listing Image: <br>
-        <img src="<%= originalImageUrl %>" class="img-fluid rounded" style="height: 150px; width: 30%; object-fit: cover;">
+        Original Listing Images: <br>
+        <% listing.images.forEach((image)=>{ %>
+        <img src="<%= image.url %>" class="img-fluid rounded edit-img">
+        <% }) %>
       </div>
 
 
       <div class="mb-3">
-        <label for="image" class="form-label">Upload New Image</label>
-        <input name="listing[image]" type="file" class="form-control" />
+        <label for="images" class="form-label">Upload New Images (Maximum 3)</label>
+        <input type="file" id="images" name="listing[images]" class="form-control" multiple accept=".jpg,.jpeg,.png,.webp">
       </div>
 
       <div class="row">
