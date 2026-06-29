@@ -131,3 +131,11 @@
     width: 100%;
     border-radius: 10px;
 }
+
+.edit-img {
+    height: 150px;
+    width: 220px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-right: 10px;
+}
