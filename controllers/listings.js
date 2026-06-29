@@ -1,4 +1,5 @@
 const Listing = require("../models/listing");
+const { cloudinary } = require("../cloudConfig");
 
 module.exports.index = async (req, res) => {
     const allListings = await Listing.find({});
@@ -54,6 +55,7 @@ module.exports.createListing = async (req, res) => {
             ]
         };
     }
+
     let listing = new Listing(req.body.listing);
 
     console.log(req.files);
@@ -80,20 +82,35 @@ module.exports.renderEditForm = async (req, res) => {
     originalImageUrl = originalImageUrl.replace("/upload", "/upload/w_250");
     res.render("listings/edit.ejs", { listing, originalImageUrl });
 
-};
+}; module.exports.updateListing = async (req, res) => {
 
-module.exports.updateListing = async (req, res) => {
     let { id } = req.params;
-    let listing = await Listing.findByIdAndUpdate(id, { ...req.body.listing });
 
-    if (typeof req.file !== "undefined") { // at the time of edit we update new file.
-        let url = req.file.path;
-        let filename = req.file.filename;
-        listing.image = { url, filename };
-        await listing.save();
+    // get old listing first
+    let listing = await Listing.findById(id);
+
+    // update normal fields
+    Object.assign(listing, req.body.listing);
+
+    // if new images uploaded
+    if (req.files && req.files.length > 0) {
+
+        // delete old Cloudinary images
+        for (let image of listing.images) {
+            await cloudinary.uploader.destroy(image.filename);
+        }
+
+        // store new images
+        listing.images = req.files.map((file) => ({
+
+            url: file.path,
+
+            filename: file.filename
+
+        }));
 
     }
-
+    await listing.save();
     req.flash("success", "Listing Updated!");
     res.redirect(`/listings/${id}`);
 };
