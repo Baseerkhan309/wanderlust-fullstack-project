@@ -6,6 +6,7 @@ const { isLoggedIn, isOwner, validateListing } = require("../middleware.js");
 const listingController = require("../controllers/listings.js");
 const multer = require('multer');
 const { storage } = require("../cloudConfig.js");
+
 const upload = multer({
     storage,
     limits: {
@@ -36,6 +37,13 @@ router.route("/").get(wrapAsync(listingController.index))
 //New Route
 router.get("/new", isLoggedIn, listingController.renderNewForm);
 
+//Search Route
+router.get("/search", wrapAsync(listingController.searchListings));
+
+//suggestions:
+router.get(
+    "/suggestions", wrapAsync(listingController.getSuggestions)
+);
 
 router.route("/:id").get(wrapAsync(listingController.showListing))
     .put(isLoggedIn, isOwner, upload.array("listing[images]", 3), validateListing, wrapAsync(listingController.updateListing))
