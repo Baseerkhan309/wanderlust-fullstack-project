@@ -99,6 +99,22 @@
 </div>
 
 <div class="row row-cols-lg-3 row-cols-md-2 row cols-sm-1 mt-3">
+
+  <% if(allListings.length === 0) { %>
+
+  <div class="text-center mt-5">
+
+    <h3>No Listings Found!</h3>
+
+    <p class="text-muted">
+      Try searching another KPK destination.
+    </p>
+
+  </div>
+
+
+  <% } else { %>
+
   <% for(let listing of allListings) { %>
   <a href="/listings/<%= listing._id %>" class="listing-link">
     <div class="card col listing-card">
@@ -118,6 +134,7 @@
       </div>
     </div>
   </a>
+  <% } %>
   <% } %>
 
 </div>
