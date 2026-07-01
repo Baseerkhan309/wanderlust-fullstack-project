@@ -17,3 +17,27 @@
     }, false)
   })
 })()
+
+const searchInput = document.getElementById("searchInput");
+const suggestionsBox = document.getElementById("suggestions");
+
+if (searchInput) {
+
+  searchInput.addEventListener("input", async () => {
+
+    const query = searchInput.value.trim();
+
+    if (query.length === 0) {
+      suggestionsBox.innerHTML = "";
+      return;
+    }
+
+    const response = await fetch(`/listings/suggestions?query=${query}`);
+
+    const suggestions = await response.json();
+
+    console.log(suggestions);
+
+  });
+
+}
