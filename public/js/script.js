@@ -36,7 +36,38 @@ if (searchInput) {
 
     const suggestions = await response.json();
 
-    console.log(suggestions);
+    // suggestionsBox
+    suggestionsBox.innerHTML = ""; // remove first old suggestion.
+
+    if (suggestions.length === 0) {
+      suggestionsBox.style.display = "none";
+      return;
+    }
+
+    suggestions.forEach((listing) => { // if mongodb return nothing. hide dropdown
+
+      suggestionsBox.innerHTML +=
+        // data location is custom html attribute like if we search sw so it will be = sw
+        `<div class="suggestion-item" data-location="${listing.location}"> 
+          ${listing.location}<br>
+            ${listing.title}
+        </div>`
+        ;
+
+    });
+
+    // sugesstion item is sugestion listing.if 2 listing JS create 2 divs
+    document.querySelectorAll(".suggestion-item").forEach((item) => {
+      item.addEventListener("click", () => {
+
+        searchInput.value = item.dataset.location;
+        suggestionsBox.style.display = "none";
+        searchInput.form.submit();
+
+      });
+    });
+
+    suggestionsBox.style.display = "block";
 
   });
 
