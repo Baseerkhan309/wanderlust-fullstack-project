@@ -139,3 +139,36 @@
     border-radius: 12px;
     margin-right: 10px;
 }
+
+#suggestions {
+    /* Makes the dropdown appear under the search bar instead of pushing the navbar down. */
+    position: absolute; 
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-top: 5px;
+    z-index: 1000;
+    display: none;
+    max-height: 250px;
+    /* Adds a scrollbar if needed */
+    overflow-y: auto;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.suggestion-item {
+    padding: 10px 15px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+}
+
+.suggestion-item:hover {
+    background-color: #f8f9fa;
+}
+
+.suggestion-item:last-child {
+    border-bottom: none;
+}
+
