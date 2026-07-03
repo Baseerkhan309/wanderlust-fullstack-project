@@ -40,10 +40,18 @@ if (searchInput) {
     suggestionsBox.innerHTML = ""; // remove first old suggestion.
 
     if (suggestions.length === 0) {
-      suggestionsBox.style.display = "none";
-      return;
-    }
 
+      // if no suggestion : inside search bar apear
+      suggestionsBox.innerHTML = `
+        <div class="suggestion-item">
+             No suggestions found
+        </div>
+    `;
+
+      suggestionsBox.style.display = "block";
+      return;
+
+    }
     suggestions.forEach((listing) => { // if mongodb return nothing. hide dropdown
 
       suggestionsBox.innerHTML +=
@@ -72,3 +80,12 @@ if (searchInput) {
   });
 
 }
+
+document.addEventListener("click", (event) => {
+  if (
+    !searchInput.contains(event.target) &&
+    !suggestionsBox.contains(event.target)
+  ) {
+    suggestionsBox.style.display = "none";
+  }
+});
