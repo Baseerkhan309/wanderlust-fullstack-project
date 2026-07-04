@@ -53,14 +53,33 @@
 
 
   <div class="mb-3">
-    <label for="location" class="form-label">Location</label>
-    <input name="listing[location]" placeholder="KPK, Swat" type="text" class="form-control" required />
-    <div class="invalid-feedback">
-      Location should be valid
+    <label for="category" class="form-label">Category</label>
+
+    <select name="listing[category]" id="category" class="form-select" required>
+      <option value="" selected disabled>Select a Category</option>
+
+      <option value="Trending"> Trending</option>
+      <option value="Mountains"> Mountains</option>
+      <option value="Lakes"> Lakes</option>
+      <option value="Camping"> Camping</option>
+      <option value="Cottages"> Cottages</option>
+      <option value="Hotels & Resorts"> Hotels & Resorts</option>
+      <option value="Nature"> Nature</option>
+      <option value="Cities"> Cities</option>
+      <option value="Guest Houses">🛖 Guest Houses</option>
+    </select>
+
+
+    <div class="mb-3">
+      <label for="location" class="form-label">Location</label>
+      <input name="listing[location]" placeholder="KPK, Swat" type="text" class="form-control" required />
+      <div class="invalid-feedback">
+        Location should be valid
+      </div>
     </div>
+    <button class="btn add-btn mt-3">Add</button>
+    <br><br>
+    </form>
   </div>
-  <button class="btn add-btn mt-3">Add</button>
-  <br><br>
-  </form>
 </div>
 </div>
