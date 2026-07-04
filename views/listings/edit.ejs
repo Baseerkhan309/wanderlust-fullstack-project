@@ -49,18 +49,45 @@
             Country name should be valid
           </div>
         </div>
-      </div>
-      <div class="mb-3">
-        <label for="location" class="form-label">Location</label>
-        <input name="listing[location]" value="<%= listing.location %>" type="text" class="form-control" required />
-        <div class="invalid-feedback">
-          Location should be valid
-        </div>
-      </div>
 
-      <br> <br>
-      <button class="btn btn-dark edit-btn mt-3">Edit</button>
+        <div class="mb-3">
+          <label for="category" class="form-label">Category</label>
+
+          <select name="listing[category]" id="category" class="form-select" required>
+            <option value="Trending" <%= listing.category === "Trending" ? "selected" : "" %>> Trending</option>
+
+            <option value="Mountains" <%= listing.category === "Mountains" ? "selected" : "" %>> Mountains</option>
+
+            <option value="Lakes" <%= listing.category === "Lakes" ? "selected" : "" %>> Lakes</option>
+
+            <option value="Camping" <%= listing.category === "Camping" ? "selected" : "" %>> Camping</option>
+
+            <option value="Cottages" <%= listing.category === "Cottages" ? "selected" : "" %>> Cottages</option>
+
+            <option value="Hotels & Resorts" <%= listing.category === "Hotels & Resorts" ? "selected" : "" %>> Hotels & Resorts</option>
+
+            <option value="Nature" <%= listing.category === "Nature" ? "selected" : "" %>> Nature</option>
+
+            <option value="Cities" <%= listing.category === "Cities" ? "selected" : "" %>> Cities</option>
+
+            <option value="Guest Houses" <%= listing.category === "Guest Houses" ? "selected" : "" %>>🛖 Guest Houses</option>
+          </select>
+
+
+
+          <div class="mb-3">
+            <label for="location" class="form-label">Location</label>
+            <input name="listing[location]" value="<%= listing.location %>" type="text" class="form-control" required />
+            <div class="invalid-feedback">
+              Location should be valid
+            </div>
+          </div>
+
+          <br> <br>
+          <button class="btn btn-dark edit-btn mt-3">Edit</button>
 
     </form>
   </div>
+</div>
+</div>
 </div>
