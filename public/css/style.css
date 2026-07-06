@@ -127,48 +127,47 @@
  }
 
  #map {
-    height: 400px;
-    width: 100%;
-    border-radius: 10px;
-}
+     height: 400px;
+     width: 100%;
+     border-radius: 10px;
+ }
 
-.edit-img {
-    height: 150px;
-    width: 220px;
-    object-fit: cover;
-    border-radius: 12px;
-    margin-right: 10px;
-}
+ .edit-img {
+     height: 150px;
+     width: 220px;
+     object-fit: cover;
+     border-radius: 12px;
+     margin-right: 10px;
+ }
 
-#suggestions {
-    /* Makes the dropdown appear under the search bar instead of pushing the navbar down. */
-    position: absolute; 
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background: #eceaea;
-    border: 1px solid #eceaea;
-    border-radius: 8px;
-    margin-top: 5px;
-    z-index: 1000;
-    display: none;
-    max-height: 250px;
-    /* Adds a scrollbar if needed */
-    overflow-y: auto;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
+ #suggestions {
+     /* Makes the dropdown appear under the search bar instead of pushing the navbar down. */
+     position: absolute;
+     top: 100%;
+     left: 0;
+     width: 100%;
+     background: #eceaea;
+     border: 1px solid #eceaea;
+     border-radius: 8px;
+     margin-top: 5px;
+     z-index: 1000;
+     display: none;
+     max-height: 250px;
+     /* Adds a scrollbar if needed */
+     overflow-y: auto;
+     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+ }
 
-.suggestion-item {
-    padding: 10px 15px;
-    cursor: pointer;
-    border-bottom: 1px solid #eee;
-}
+ .suggestion-item {
+     padding: 10px 15px;
+     cursor: pointer;
+     border-bottom: 1px solid #eee;
+ }
 
-.suggestion-item:hover {
-    background-color: #f8f9fa;
-}
+ .suggestion-item:hover {
+     background-color: #f8f9fa;
+ }
 
-.suggestion-item:last-child {
-    border-bottom: none;
-}
-
+ .suggestion-item:last-child {
+     border-bottom: none;
+ }
