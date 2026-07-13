@@ -45,6 +45,13 @@ router.get(
     "/suggestions", wrapAsync(listingController.getSuggestions)
 );
 
+//category Route
+router.get(
+    "/category/:category",
+    wrapAsync(listingController.filterByCategory)
+);
+
+//Dynamic route
 router.route("/:id").get(wrapAsync(listingController.showListing))
     .put(isLoggedIn, isOwner, upload.array("listing[images]", 3), validateListing, wrapAsync(listingController.updateListing))
     .delete(isLoggedIn, isOwner, wrapAsync(listingController.destroyListing));

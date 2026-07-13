@@ -27,10 +27,14 @@ module.exports.getSuggestions = async (req, res) => {
         .limit(5);
     res.json(suggestions);
 };
-
+// Index route
 module.exports.index = async (req, res) => {
     const allListings = await Listing.find({});
-    res.render("listings/index.ejs", { allListings })
+
+    res.render("listings/index.ejs", {
+        allListings,
+        selectedCategory: "All Listings"
+    });
 };
 
 
@@ -148,4 +152,15 @@ module.exports.destroyListing = async (req, res) => {
     console.log(deletedListing);
     req.flash("success", "Listing Deleted!");
     res.redirect("/listings");
+};
+
+module.exports.filterByCategory = async (req, res) => {
+    const { category } = req.params;
+
+    const allListings = await Listing.find({ category });
+
+    res.render("listings/index.ejs", {
+        allListings,
+        selectedCategory: category
+    });
 };
