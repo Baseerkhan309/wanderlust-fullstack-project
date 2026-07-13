@@ -41,55 +41,73 @@
 
 <div id="filters">
 
-  <div class="filter">
-    <div><i class="fa-solid fa-fire"></i></div>
-    <p>Trending</p>
-  </div>
-
-  <div class="filter">
-    <div><i class="fa-solid fa-mountain"></i></div>
-    <p>Mountains</p>
-  </div>
-
-  <div class="filter">
-    <div><i class="fa-solid fa-water"></i></div>
-    <p>Lakes</p>
-  </div>
-
-  <div class="filter">
-    <div><i class="fa-solid fa-campground"></i></div>
-    <p>Camping</p>
-  </div>
-
-  <div class="filter">
-    <div><i class="fa-solid fa-house"></i></div>
-    <p>Cottages</p>
-  </div>
-
-  <div class="filter">
-    <div><i class="fa-solid fa-hotel"></i></div>
-    <p>Resorts</p>
-  </div>
-
-  <div class="filter">
-    <div><i class="fa-solid fa-leaf"></i></div>
-    <p>Nature</p>
-  </div>
-
-  <div class="filter">
-    <div><i class="fa-solid fa-city"></i></div>
-    <p>Cities</p>
-  </div>
-
-  <div class="filter">
-    <div><i class="fa-solid fa-house-user"></i></div>
-    <p>Guest Houses</p>
-  </div>
-
-  <div class="filter">
-    <div><i class="fa-solid fa-star"></i></div>
+  <a href="/listings" class="filter <%= selectedCategory === 'All Listings' ? 'active' : '' %>">
+    <div>
+      <i class="fa-solid fa-border-all"></i>
+    </div>
     <p>All Listings</p>
-  </div>
+  </a>
+
+
+  <a href="/listings/category/Mountains" class="filter <%= selectedCategory === 'Mountains' ? 'active' : '' %>">
+    <div>
+      <i class="fa-solid fa-mountain"></i>
+    </div>
+    <p>Mountains</p>
+  </a>
+
+
+  <a href="/listings/category/Nature" class="filter">
+    <div>
+      <i class="fa-solid fa-tree"></i>
+    </div>
+    <p>Nature</p>
+  </a>
+
+
+  <a href="/listings/category/Cities" class="filter">
+    <div>
+      <i class="fa-solid fa-city"></i>
+    </div>
+    <p>Cities</p>
+  </a>
+
+  <a href="/listings/category/Lakes" class="filter">
+    <div>
+      <i class="fa-solid fa-water"></i>
+    </div>
+    <p>Lakes</p>
+  </a>
+
+  <a href="/listings/category/Camping" class="filter">
+    <div>
+      <i class="fa-solid fa-campground"></i>
+    </div>
+    <p>Camping</p>
+  </a>
+
+
+  <a href="/listings/category/Guest%20Houses" class="filter">
+    <div>
+      <i class="fa-solid fa-house"></i>
+    </div>
+    <p>Guest Houses</p>
+  </a>
+
+
+  <a href="/listings/category/Hotels%20%26%20Resorts" class="filter">
+    <div>
+      <i class="fa-solid fa-hotel"></i>
+    </div>
+    <p>Hotels & Resorts</p>
+  </a>
+
+  <a href="/listings/category/Cottages" class="filter">
+    <div>
+      <i class="fa-solid fa-house-chimney"></i>
+    </div>
+    <p>Cottages</p>
+  </a>
 
 
   <div class="tax-toggle">
