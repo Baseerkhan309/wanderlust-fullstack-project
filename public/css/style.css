@@ -171,3 +171,7 @@
  .suggestion-item:last-child {
      border-bottom: none;
  }
+
+ .filter.active {
+    border-bottom: 3px solid black;
+}
