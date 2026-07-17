@@ -96,12 +96,15 @@
      opacity: 0.2;
      background-color: white;
  }
-
- .add-btn {
-     background-color: #fd3d49 !important;
-     color: white !important;
-     border: none !important;
- }
+.add-btn {
+    background-color: #fd3d49 !important;
+    color: white !important;
+    border: none !important;
+    display: inline-block;
+    width: auto !important;
+    padding: 8px 25px;
+    border-radius: 8px;
+}
 
  /* Show page image fix */
  .show-img {
@@ -119,6 +122,9 @@
      background-color: #eb3645 !important;
      color: rgb(246, 241, 241) !important;
      border: none !important;
+     padding: 6px 18px;
+     font-size: 14px;
+     border-radius: 8px;
  }
 
  .edit-btn:hover {

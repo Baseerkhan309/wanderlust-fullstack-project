@@ -24,7 +24,6 @@ const suggestionsBox = document.getElementById("suggestions");
 if (searchInput) {
 
   searchInput.addEventListener("input", async () => {
-
     const query = searchInput.value.trim();
 
     if (query.length === 0) {
@@ -33,7 +32,6 @@ if (searchInput) {
     }
 
     const response = await fetch(`/listings/suggestions?query=${query}`);
-
     const suggestions = await response.json();
 
     // suggestionsBox
@@ -89,3 +87,14 @@ document.addEventListener("click", (event) => {
     suggestionsBox.style.display = "none";
   }
 });
+
+// For Price
+const priceInput = document.querySelector("#price");
+
+if (priceInput) {
+  priceInput.addEventListener("input", function () {
+    if (this.value < 1) {
+      this.value = "";
+    }
+  });
+}
