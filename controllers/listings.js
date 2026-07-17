@@ -12,7 +12,10 @@ module.exports.searchListings = async (req, res) => {
         ]
     });
 
-    res.render("listings/index.ejs", { allListings });
+    res.render("listings/index.ejs", {
+        allListings,
+        selectedCategory: "All Listings"
+    });
 };
 
 module.exports.getSuggestions = async (req, res) => {
@@ -114,6 +117,7 @@ module.exports.renderEditForm = async (req, res) => {
     res.render("listings/edit.ejs", { listing, originalImageUrl });
 
 }; module.exports.updateListing = async (req, res) => {
+
 
     let { id } = req.params;
 
