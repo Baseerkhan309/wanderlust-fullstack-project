@@ -1,93 +1,143 @@
 <% layout("/layouts/boilerplate") %>
+
 <div class="row mt-3">
   <div class="col-8 offset-2">
 
     <h3>Edit Your Listing!</h3>
-    <form method="POST" action="/listings/<%= listing._id %>?_method=PUT" novalidate class="needs-validation" enctype="multipart/form-data">
+
+    <form method="POST" action="/listings/<%= listing._id %>?_method=PUT" class="needs-validation" novalidate enctype="multipart/form-data">
+
+      <!-- Title -->
       <div class="mb-3">
-        <label for="title" class="form-label">Title </label>
-        <input name="listing[title]" value=" <%= listing.title %> " type="text" class="form-control" required />
+        <label for="title" class="form-label">Title</label>
+
+        <input id="title" name="listing[title]" value="<%= listing.title %>" type="text" class="form-control" required />
+
         <div class="valid-feedback">
           Title looks good!
         </div>
       </div>
 
+      <!-- Description -->
       <div class="mb-3">
         <label for="description" class="form-label">Description</label>
-        <textarea name="listing[description]" class="form-control" required><%= listing.description %> </textarea>
+
+        <textarea id="description" name="listing[description]" rows="5" class="form-control" required><%= listing.description %></textarea>
+
         <div class="invalid-feedback">
-          please enter a short Description
+          Please enter a short description.
         </div>
       </div>
 
+      <!-- Existing Images -->
       <div class="mb-3">
-        Original Listing Images: <br>
-        <% listing.images.forEach((image)=>{ %>
-        <img src="<%= image.url %>" class="img-fluid rounded edit-img">
+        <label class="form-label">Current Images</label>
+        <br>
+
+        <% listing.images.forEach((image) => { %>
+        <img src="<%= image.url %>" class="img-fluid rounded edit-img" alt="Listing Image">
         <% }) %>
       </div>
 
-
+      <!-- Upload Images -->
       <div class="mb-3">
-        <label for="images" class="form-label">Upload New Images (Maximum 3)</label>
+        <label for="images" class="form-label">
+          Upload New Images
+        </label>
+
         <input type="file" id="images" name="listing[images]" class="form-control" multiple accept=".jpg,.jpeg,.png,.webp">
+
+        <small class="text-muted">
+          Maximum 3 images • JPG, JPEG, PNG, WEBP • Max size 5MB each
+        </small>
       </div>
 
+      <!-- Price & Country -->
       <div class="row">
+
         <div class="mb-3 col-md-4">
           <label for="price" class="form-label">Price</label>
-          <input name="listing[price]" value="<%= listing.price %>" type="number" class="form-control" required />
+
+          <input id="price" name="listing[price]" value="<%= listing.price %>" type="number" min="1" class="form-control" required>
+
           <div class="invalid-feedback">
-            Price should be valid
+            Price should be valid.
           </div>
         </div>
 
         <div class="mb-3 col-md-8">
-          <label for="location" class="form-label">Country</label>
-          <input name="listing[country]" value="<%= listing.country %>" type="text" class="form-control" required />
+          <label for="country" class="form-label">Country</label>
+
+          <input id="country" name="listing[country]" value="<%= listing.country %>" type="text" class="form-control" required>
+
           <div class="invalid-feedback">
-            Country name should be valid
+            Country name should be valid.
           </div>
         </div>
 
-        <div class="mb-3">
-          <label for="category" class="form-label">Category</label>
+      </div>
 
-          <select name="listing[category]" id="category" class="form-select" required>
-            <option value="Trending" <%= listing.category === "Trending" ? "selected" : "" %>> Trending</option>
+      <!-- Category -->
+      <div class="mb-3">
+        <label for="category" class="form-label">Category</label>
 
-            <option value="Mountains" <%= listing.category === "Mountains" ? "selected" : "" %>> Mountains</option>
+        <select name="listing[category]" id="category" class="form-select" required>
 
-            <option value="Lakes" <%= listing.category === "Lakes" ? "selected" : "" %>> Lakes</option>
+          <option value="Mountains" <%= listing.category === "Mountains" ? "selected" : "" %>>
+            Mountains
+          </option>
 
-            <option value="Camping" <%= listing.category === "Camping" ? "selected" : "" %>> Camping</option>
+          <option value="Lakes" <%= listing.category === "Lakes" ? "selected" : "" %>>
+            Lakes
+          </option>
 
-            <option value="Cottages" <%= listing.category === "Cottages" ? "selected" : "" %>> Cottages</option>
+          <option value="Camping" <%= listing.category === "Camping" ? "selected" : "" %>>
+            Camping
+          </option>
 
-            <option value="Hotels & Resorts" <%= listing.category === "Hotels & Resorts" ? "selected" : "" %>> Hotels & Resorts</option>
+          <option value="Cottages" <%= listing.category === "Cottages" ? "selected" : "" %>>
+            Cottages
+          </option>
 
-            <option value="Nature" <%= listing.category === "Nature" ? "selected" : "" %>> Nature</option>
+          <option value="Hotels & Resorts" <%= listing.category === "Hotels & Resorts" ? "selected" : "" %>>
+            Hotels & Resorts
+          </option>
 
-            <option value="Cities" <%= listing.category === "Cities" ? "selected" : "" %>> Cities</option>
+          <option value="Nature" <%= listing.category === "Nature" ? "selected" : "" %>>
+            Nature
+          </option>
 
-            <option value="Guest Houses" <%= listing.category === "Guest Houses" ? "selected" : "" %>>🛖 Guest Houses</option>
-          </select>
+          <option value="Cities" <%= listing.category === "Cities" ? "selected" : "" %>>
+            Cities
+          </option>
 
+          <option value="Guest Houses" <%= listing.category === "Guest Houses" ? "selected" : "" %>>
+            Guest Houses
+          </option>
 
+        </select>
 
-          <div class="mb-3">
-            <label for="location" class="form-label">Location</label>
-            <input name="listing[location]" value="<%= listing.location %>" type="text" class="form-control" required />
-            <div class="invalid-feedback">
-              Location should be valid
-            </div>
-          </div>
+        <div class="invalid-feedback">
+          Please select a category.
+        </div>
+      </div>
 
-          <br> <br>
-          <button class="btn btn-dark edit-btn mt-3">Edit</button>
+      <!-- Location -->
+      <div class="mb-3">
+        <label for="location" class="form-label">Location</label>
+
+        <input id="location" name="listing[location]" value="<%= listing.location %>" type="text" class="form-control" required>
+
+        <div class="invalid-feedback">
+          Location should be valid.
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-dark edit-btn mt-3">
+        Update Listing
+      </button>
 
     </form>
+
   </div>
-</div>
-</div>
 </div>
