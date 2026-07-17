@@ -21,7 +21,7 @@
       <div class="carousel-inner">
         <% listing.images.forEach((image, index) => { %>
         <div class="carousel-item <%= index === 0 ? 'active' : '' %>">
-          <img src="<%= image.url %>" class="d-block w-100 show-img" alt="listing_image">
+          <img src="<%= image.url %>" class="d-block w-100 show-img" alt="<%= listing.title %>">
         </div>
         <% }) %>
       </div>
@@ -41,7 +41,15 @@
     <div class="card-body">
       <p class="card-text">Owned by: <i><%= listing.owner.username %></i></p>
       <p class="card-text"><%= listing.description %></p>
-      <p class="card-text">₨<%= listing.price.toLocaleString("en-PK") %></p>
+
+      <p class="card-text fw-bold">
+        ₨<%= listing.price.toLocaleString("en-PK") %> / night
+      </p>
+
+      <span class="badge bg-secondary">
+        <%= listing.category %>
+      </span>
+
       <p class="card-text"><%= listing.location %> </p>
       <p class="card-text"><%= listing.country %></p>
       <div id="map"></div>
@@ -52,7 +60,7 @@
 
   <div class="col-6 offset-3 mt-3">
     <div class="d-flex gap-2">
-      <a href="/listings/<%= listing._id %>/edit" class="btn edit-btn">
+      <a href="/listings/<%= listing._id %>/edit" class="btn btn-danger">
         Edit
       </a>
 
@@ -118,7 +126,7 @@
   <%  if(listing.reviews.length > 0) { %>
   <div class="row">
     <p><b>All Reviews</b>
-      <% for(review of listing.reviews) { %>
+      <% listing.reviews.forEach((review)=>{ %>
     <div class="card col-5 ms-3 mb-3">
       <div class="card-body">
         <h5 class="card-title">@<%= review.author.username %></h5>
@@ -131,7 +139,7 @@
         </form>
       </div>
     </div>
-    <% } %>
+    <% }) %>
   </div>
   <% } %>
 </div>

@@ -57,7 +57,7 @@
   </a>
 
 
-  <a href="/listings/category/Nature" class="filter">
+  <a href="/listings/category/Nature" class="filter <%= selectedCategory === 'Nature' ? 'active' : '' %>">
     <div>
       <i class="fa-solid fa-tree"></i>
     </div>
@@ -65,21 +65,22 @@
   </a>
 
 
-  <a href="/listings/category/Cities" class="filter">
+  <a href="/listings/category/Cities" class="filter <%= selectedCategory === 'Cities' ? 'active' : '' %>">
     <div>
       <i class="fa-solid fa-city"></i>
     </div>
     <p>Cities</p>
   </a>
 
-  <a href="/listings/category/Lakes" class="filter">
+
+  <a href="/listings/category/Lakes" class="filter <%= selectedCategory === 'Lakes' ? 'active' : '' %>">
     <div>
       <i class="fa-solid fa-water"></i>
     </div>
     <p>Lakes</p>
   </a>
 
-  <a href="/listings/category/Camping" class="filter">
+  <a href="/listings/category/Camping" class="filter <%= selectedCategory === 'Camping' ? 'active' : '' %>">
     <div>
       <i class="fa-solid fa-campground"></i>
     </div>
@@ -87,7 +88,8 @@
   </a>
 
 
-  <a href="/listings/category/Guest%20Houses" class="filter">
+
+  <a href="/listings/category/Guest%20Houses" class="filter <%= selectedCategory === 'Guest Houses' ? 'active' : '' %>">
     <div>
       <i class="fa-solid fa-house"></i>
     </div>
@@ -95,14 +97,16 @@
   </a>
 
 
-  <a href="/listings/category/Hotels%20%26%20Resorts" class="filter">
+
+  <a href="/listings/category/Hotels%20%26%20Resorts" class="filter <%= selectedCategory === 'Hotels & Resorts' ? 'active' : '' %>">
     <div>
       <i class="fa-solid fa-hotel"></i>
     </div>
     <p>Hotels & Resorts</p>
   </a>
 
-  <a href="/listings/category/Cottages" class="filter">
+
+  <a href="/listings/category/Cottages" class="filter <%= selectedCategory === 'Cottages' ? 'active' : '' %>">
     <div>
       <i class="fa-solid fa-house-chimney"></i>
     </div>
