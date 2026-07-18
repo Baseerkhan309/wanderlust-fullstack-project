@@ -149,11 +149,20 @@ module.exports.renderEditForm = async (req, res) => {
     req.flash("success", "Listing Updated!");
     res.redirect(`/listings/${id}`);
 };
-
 module.exports.destroyListing = async (req, res) => {
     let { id } = req.params;
-    let deletedListing = await Listing.findByIdAndDelete(id);
-    console.log(deletedListing);
+
+    // Find the listing first
+    const listing = await Listing.findById(id);
+
+    // Delete all images from Cloudinary
+    for (let image of listing.images) {
+        await cloudinary.uploader.destroy(image.filename);
+    }
+
+    // Delete the listing from MongoDB
+    await Listing.findByIdAndDelete(id);
+
     req.flash("success", "Listing Deleted!");
     res.redirect("/listings");
 };
