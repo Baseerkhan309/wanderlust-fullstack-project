@@ -1,92 +1,130 @@
-<%  layout("/layouts/boilerplate") %>
+<% layout("/layouts/boilerplate") %>
+
 <div class="row mt-3">
   <div class="col-8 offset-2">
+
     <br><br>
-    <h3> Create a New Listing! </h3>
-    <form method="POST" action="/listings" novalidate class="needs-validation" enctype="multipart/form-data">
+
+    <h3>Create a New Listing!</h3>
+
+    <form method="POST" action="/listings" class="needs-validation" novalidate enctype="multipart/form-data">
+
       <div class="mb-3">
-        <label for="title" class="form-label">Title</label>
+        <label class="form-label">Title</label>
 
         <input name="listing[title]" placeholder="Add a catchy title" type="text" class="form-control" required />
+
         <div class="valid-feedback">
           Title looks good!
         </div>
 
-      </div>
-      <div class="mb-3"> <label for="description" class="form-label">Description</label>
-        <textarea name="listing[description]" rows="5" class="form-control" placeholder="Describe your listing..." required>
-        </textarea>
         <div class="invalid-feedback">
-          please enter a short Description
+          Please enter a title.
         </div>
       </div>
 
+
       <div class="mb-3">
-        <label for="images" class="form-label">Upload Images (Maximum 3)</label>
-        <input type="file" id="images" name="listing[images]" class="form-control" multiple accept=".jpg,.jpeg,.png,.webp">
+        <label class="form-label">Description</label>
+
+        <textarea name="listing[description]" rows="5" class="form-control" placeholder="Describe your listing..." required></textarea>
+
+        <div class="invalid-feedback">
+          Please enter a short Description.
+        </div>
+      </div>
+
+
+      <div class="mb-3">
+        <label class="form-label">Upload Images (Maximum 3)</label>
+
+        <input type="file" name="listing[images]" class="form-control" multiple accept=".jpg,.jpeg,.png,.webp">
+
         <small class="text-muted">
           Maximum 3 images • JPG, JPEG, PNG, WEBP • Max size 5MB each
         </small>
       </div>
-  </div>
 
 
-  <div class="row">
-    <div class="mb-3 col-md-4">
-      <label for="price" class="form-label">Price</label>
-      <input name="listing[price]" id="price" type="number" min="1" class="form-control" required />
-      <div class="invalid-feedback">
-        Price should be valid
+
+      <div class="row">
+
+        <div class="mb-3 col-md-4">
+          <label class="form-label">Price</label>
+
+          <input name="listing[price]" type="number" min="1" class="form-control" required />
+
+          <div class="invalid-feedback">
+            Price should be valid.
+          </div>
+        </div>
+
+
+
+        <div class="mb-3 col-md-8">
+          <label class="form-label">Country</label>
+
+          <input name="listing[country]" placeholder="Pakistan" type="text" class="form-control" required />
+
+          <div class="invalid-feedback">
+            Country name should be valid.
+          </div>
+        </div>
+
       </div>
-    </div>
 
 
 
-    <div class="mb-3 col-md-8">
-      <label for="country" class="form-label">Country</label>
-      <input name="listing[country]" placeholder="Pakistan" type="text" class="form-control" required />
-      <div class="invalid-feedback">
-        Country name should be valid
+      <div class="mb-3">
+
+        <label class="form-label">Category</label>
+
+        <select name="listing[category]" class="form-select" required>
+
+          <option value="" selected disabled>
+            Select a Category
+          </option>
+
+          <option value="Mountains">Mountains</option>
+          <option value="Lakes">Lakes</option>
+          <option value="Camping">Camping</option>
+          <option value="Cottages">Cottages</option>
+          <option value="Hotels & Resorts">Hotels & Resorts</option>
+          <option value="Nature">Nature</option>
+          <option value="Cities">Cities</option>
+          <option value="Guest Houses">Guest Houses</option>
+
+        </select>
+
+
+        <div class="invalid-feedback">
+          Please select a category.
+        </div>
+
       </div>
-    </div>
+
+
+
+      <div class="mb-3">
+
+        <label class="form-label">Location</label>
+
+        <input name="listing[location]" placeholder="KPK, Swat" type="text" class="form-control" required />
+
+        <div class="invalid-feedback">
+          Location should be valid.
+        </div>
+
+      </div>
+
+
+
+      <button type="submit" class="btn add-btn mt-3">
+        Add
+      </button>
+
+
+    </form>
+
   </div>
-
-
-  <div class="mb-3">
-    <label for="category" class="form-label">Category</label>
-    <select name="listing[category]" id="category" class="form-select" required>
-      <option value="" selected disabled>
-        Select a Category
-      </option>
-      <option value="Mountains">Mountains</option>
-      <option value="Lakes">Lakes</option>
-      <option value="Camping">Camping</option>
-      <option value="Cottages">Cottages</option>
-      <option value="Hotels & Resorts">Hotels & Resorts</option>
-      <option value="Nature">Nature</option>
-      <option value="Cities">Cities</option>
-      <option value="Guest Houses">Guest Houses</option>
-    </select>
-
-    <div class="invalid-feedback">
-      Please select a category.
-    </div>
-  </div>
-
-  <div class="mb-3">
-    <label for="location" class="form-label">Location</label>
-    <input name="listing[location]" placeholder="KPK, Swat" type="text" class="form-control" required />
-    <div class="invalid-feedback">
-      Location should be valid
-    </div>
-  </div>
-
-
-  <button type="submit" class="btn add-btn mt-3">
-    Add
-  </button>
-  <br><br>
-  </form>
-</div>
-</div>
 </div>
