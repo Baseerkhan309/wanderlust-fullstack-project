@@ -137,9 +137,7 @@ module.exports.renderEditForm = async (req, res) => {
 
         // store new images
         listing.images = req.files.map((file) => ({
-
             url: file.path,
-
             filename: file.filename
 
         }));
