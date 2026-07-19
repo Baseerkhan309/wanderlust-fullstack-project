@@ -17,6 +17,7 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
 const userRouter = require("./routes/user.js");
+const multer = require("multer");
 
 
 
@@ -91,14 +92,32 @@ app.use("/", userRouter);
 
 
 // Express Error
+
 app.use((req, res, next) => {
   next(new ExpressError(404, "Page Not Found"));
 });
 
 app.use((err, req, res, next) => {
-  let { statusCode = 500, message = "Something wnet wrong" } = err;
+
+  if (err instanceof multer.MulterError) {
+
+    if (err.code === "LIMIT_UNEXPECTED_FILE") {
+      return res.status(400).render("error.ejs", {
+        message: "You can upload a maximum of 3 images."
+      });
+    }
+
+    if (err.code === "LIMIT_FILE_SIZE") {
+      return res.status(400).render("error.ejs", {
+        message: "Each image must be less than 5MB."
+      });
+    }
+
+  }
+
+  let { statusCode = 500, message = "Something went wrong" } = err;
+
   res.status(statusCode).render("error.ejs", { message });
-  // res.status(statusCode).send(message);
 
 });
 
