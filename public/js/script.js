@@ -101,3 +101,25 @@ if (priceInput) {
     }
   });
 }
+
+// For Images // Maximum 3 images validation
+const imageInput = document.querySelector("#images");
+
+if (imageInput) {
+
+  imageInput.addEventListener("change", function () {
+
+    if (this.files.length > 3) {
+
+      this.classList.add("is-invalid");
+      this.value = "";
+
+    } else {
+
+      this.classList.remove("is-invalid");
+
+    }
+
+  });
+
+}
