@@ -17,6 +17,7 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
 const userRouter = require("./routes/user.js");
+const aiRouter = require("./routes/ai"); // Ai router
 const multer = require("multer");
 
 
@@ -77,6 +78,7 @@ app.use((req, res, next) => {
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
+app.use("/ai", aiRouter); // Ai router
 
 
 // Express Error
