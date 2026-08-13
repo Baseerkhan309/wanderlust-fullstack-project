@@ -7,6 +7,7 @@ const ai = new GoogleGenAI({
 module.exports.generateDescription = async (req, res) => {
 
     console.log("REQ BODY:", req.body);
+    const { title, location, category } = req.body;
 
     const response = await ai.models.generateContent({
         model: "models/gemini-3.5-flash-lite",
