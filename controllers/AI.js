@@ -11,8 +11,14 @@ module.exports.generateDescription = async (req, res) => {
 
     const response = await ai.models.generateContent({
         model: "models/gemini-3.5-flash-lite",
-        contents: "Say Hello from Gemini.",
+        contents: `Write a professional and attractive travel description for this listing.
+
+      Title: ${title}
+      Location: ${location}
+      Category: ${category}
+     Keep the description around 80-100 words. Make it suitable for a travel website and do not use emojis.`,
     });
+
     const text = response.text;
-    res.send(text);
+    res.json({ description: text });
 };
