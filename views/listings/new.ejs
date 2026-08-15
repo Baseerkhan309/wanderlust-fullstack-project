@@ -27,6 +27,10 @@
       <div class="mb-3">
         <label class="form-label">Description</label>
 
+        <button type="button" id="generate-description" class="btn btn-outline-primary mb-2">
+          Generate Description
+        </button>
+
         <textarea name="listing[description]" rows="5" class="form-control" placeholder="Describe your listing..." required></textarea>
 
         <div class="invalid-feedback">
@@ -132,3 +136,32 @@
 
   </div>
 </div>
+<!-- 
+// New AI Generated Code... -->
+
+<script>
+  const generateBtn = document.getElementById("generate-description");
+
+  generateBtn.addEventListener("click", async () => {
+
+    const title = document.querySelector('input[name="listing[title]"]').value;
+    const location = document.querySelector('input[name="listing[location]"]').value;
+    const category = document.querySelector('input[name="listing[category]"]').value;
+
+    const response = await fetch("/ai/test", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        title,
+        location,
+        category
+      })
+    });
+
+    const data = await response.json();
+
+    console.log(data);
+  });
+</script>
