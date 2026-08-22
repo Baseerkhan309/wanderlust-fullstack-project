@@ -96,15 +96,16 @@
      opacity: 0.2;
      background-color: white;
  }
-.add-btn {
-    background-color: #fd3d49 !important;
-    color: white !important;
-    border: none !important;
-    display: inline-block;
-    width: auto !important;
-    padding: 8px 25px;
-    border-radius: 8px;
-}
+
+ .add-btn {
+     background-color: #fd3d49 !important;
+     color: white !important;
+     border: none !important;
+     display: inline-block;
+     width: auto !important;
+     padding: 8px 25px;
+     border-radius: 8px;
+ }
 
  /* Show page image fix */
  .show-img {
@@ -120,7 +121,7 @@
 
  .edit-btn {
      background-color: #eb3645 !important;
-     color: rgb(248, 237, 238) !important;
+     color: rgb(247, 237, 238) !important;
      border: none !important;
      padding: 6px 18px;
      font-size: 14px;
@@ -179,5 +180,5 @@
  }
 
  .filter.active {
-    border-bottom: 3px solid black;
-}
+     border-bottom: 3px solid black;
+ }
